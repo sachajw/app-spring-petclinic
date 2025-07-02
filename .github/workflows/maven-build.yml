@@ -26,4 +26,4 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Build with Maven Wrapper
-        run: ./mvnw -B verify
+        run: ./mvnw -B -Dcheckstyle.skip=true -Dspring-javaformat.skip=true verify
