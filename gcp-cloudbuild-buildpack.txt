@@ -1,0 +1,217 @@
+starting build "fbb53cfb-5631-48a4-8074-d05e21f428a5"
+FETCHSOURCE
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: 	git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m <name>
+Initialized empty Git repository in /workspace/.git/
+From https://github.com/sachajw/app-spring-petclinic
+ * branch            f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011 -> FETCH_HEAD
+HEAD is now at f9399b7 Fix typo in visits form which caused button to miss its text
+GitCommit:
+f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011
+BUILD
+Starting Step #0 - "Buildpack"
+Pulling image: gcr.io/k8s-skaffold/pack
+Using default tag: latest
+latest: Pulling from k8s-skaffold/pack
+396c31837116: Pulling fs layer
+9776b10d5c8c: Pulling fs layer
+52cb9ac3197f: Pulling fs layer
+9776b10d5c8c: Download complete
+396c31837116: Verifying Checksum
+396c31837116: Download complete
+52cb9ac3197f: Verifying Checksum
+52cb9ac3197f: Download complete
+396c31837116: Pull complete
+9776b10d5c8c: Pull complete
+52cb9ac3197f: Pull complete
+Digest: sha256:221c0c0d9a90f46f108bb888a1da9e99c82ff631e8b1c63b0223ea951752bd53
+Status: Downloaded newer image for gcr.io/k8s-skaffold/pack:latest
+gcr.io/k8s-skaffold/pack:latest
+latest: Pulling from buildpacks/builder
+Digest: sha256:ae835baac2946b6251f38d41a538809b2f3b866600ebebed67783102811b89ee
+Status: Downloaded newer image for gcr.io/buildpacks/builder:latest
+latest: Pulling from buildpacks/google-22/run
+Digest: sha256:dbd742d70aa15e60bd220548eb0298481607dc28c19b3faef8b57e9008f49353
+Status: Downloaded newer image for gcr.io/buildpacks/google-22/run:latest
+0.20.5: Pulling from buildpacksio/lifecycle
+0baecf37abee: Pulling fs layer
+bfb59b82a9b6: Pulling fs layer
+efa9d1d5d3a2: Pulling fs layer
+a62778643d56: Pulling fs layer
+7c12895b777b: Pulling fs layer
+3214acf345c0: Pulling fs layer
+5664b15f108b: Pulling fs layer
+0bab15eea81d: Pulling fs layer
+4aa0ea1413d3: Pulling fs layer
+da7816fa955e: Pulling fs layer
+9aee425378d2: Pulling fs layer
+8efdac1741f0: Pulling fs layer
+3214acf345c0: Waiting
+5664b15f108b: Waiting
+0bab15eea81d: Waiting
+4aa0ea1413d3: Waiting
+da7816fa955e: Waiting
+9aee425378d2: Waiting
+8efdac1741f0: Waiting
+a62778643d56: Waiting
+7c12895b777b: Waiting
+bfb59b82a9b6: Verifying Checksum
+bfb59b82a9b6: Download complete
+0baecf37abee: Verifying Checksum
+0baecf37abee: Download complete
+efa9d1d5d3a2: Verifying Checksum
+efa9d1d5d3a2: Download complete
+0baecf37abee: Pull complete
+bfb59b82a9b6: Pull complete
+a62778643d56: Download complete
+7c12895b777b: Verifying Checksum
+7c12895b777b: Download complete
+3214acf345c0: Verifying Checksum
+3214acf345c0: Download complete
+efa9d1d5d3a2: Pull complete
+a62778643d56: Pull complete
+4aa0ea1413d3: Verifying Checksum
+4aa0ea1413d3: Download complete
+5664b15f108b: Verifying Checksum
+5664b15f108b: Download complete
+7c12895b777b: Pull complete
+3214acf345c0: Pull complete
+0bab15eea81d: Verifying Checksum
+0bab15eea81d: Download complete
+5664b15f108b: Pull complete
+da7816fa955e: Verifying Checksum
+da7816fa955e: Download complete
+9aee425378d2: Verifying Checksum
+9aee425378d2: Download complete
+0bab15eea81d: Pull complete
+4aa0ea1413d3: Pull complete
+da7816fa955e: Pull complete
+8efdac1741f0: Verifying Checksum
+8efdac1741f0: Download complete
+9aee425378d2: Pull complete
+8efdac1741f0: Pull complete
+Digest: sha256:3274fe28594f484240fc3f17e46b7b45e304830e544dcdd82ce19472d159ef71
+Status: Downloaded newer image for buildpacksio/lifecycle:0.20.5
+===> ANALYZING
+[analyzer] Image with name "europe-west1-docker.pkg.dev/cloudorbitnx/cloud-run-source-deploy/app-spring-petclinic/spring-pet-clinic:f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011" not found
+===> DETECTING
+[detector] target distro name/version labels not found, reading /etc/os-release file
+[detector] 4 of 5 buildpacks participating
+[detector] google.java.runtime      0.9.2
+[detector] google.java.maven        0.9.0
+[detector] google.java.entrypoint   0.9.0
+[detector] google.utils.label-image 0.0.2
+===> RESTORING
+===> BUILDING
+[builder] target distro name/version labels not found, reading /etc/os-release file
+[builder] === Java - Runtime (google.java.runtime@0.9.2) ===
+[builder] Using latest Java 21 runtime version. You can specify a different version with GOOGLE_RUNTIME_VERSION: https://github.com/GoogleCloudPlatform/buildpacks#configuration
+[builder] 2025/07/02 09:21:23 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/canonicaljdk/version.json
+[builder] ***** CACHE MISS: "canonicaljdk"
+[builder] Installing  v21.0.7+6-Ubuntu-0ubuntu122.04.
+[builder] 2025/07/02 09:21:23 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/canonicaljdk/canonicaljdk-21.0.7_6-Ubuntu-0ubuntu122.04.tar.gz
+[builder] === Java - Maven (google.java.maven@0.9.0) ===
+[builder] --------------------------------------------------------------------------------
+[builder] Running "./mvnw clean package --batch-mode -DskipTests -Dhttp.keepAlive=false -f=pom.xml --quiet"
+[builder] Done "./mvnw clean package --batch-mode -DskipTests -Dhttp.keepAli..." (48.116200982s)
+[builder] === Java - Entrypoint (google.java.entrypoint@0.9.0) ===
+[builder] === Utils - Label Image (google.utils.label-image@0.0.2) ===
+===> EXPORTING
+[exporter] Adding layer 'google.java.runtime:java'
+[exporter] Adding layer 'buildpacksio/lifecycle:launch.sbom'
+[exporter] Added 1/1 app layer(s)
+[exporter] Adding layer 'buildpacksio/lifecycle:launcher'
+[exporter] Adding layer 'buildpacksio/lifecycle:config'
+[exporter] Adding layer 'buildpacksio/lifecycle:process-types'
+[exporter] Adding label 'io.buildpacks.lifecycle.metadata'
+[exporter] Adding label 'io.buildpacks.build.metadata'
+[exporter] Adding label 'io.buildpacks.project.metadata'
+[exporter] Setting default process type 'web'
+[exporter] Saving europe-west1-docker.pkg.dev/cloudorbitnx/cloud-run-source-deploy/app-spring-petclinic/spring-pet-clinic:f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011...
+[exporter] *** Images (b13489a42431):
+[exporter]       europe-west1-docker.pkg.dev/cloudorbitnx/cloud-run-source-deploy/app-spring-petclinic/spring-pet-clinic:f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011
+[exporter] Adding cache layer 'google.java.runtime:java'
+[exporter] Adding cache layer 'google.java.maven:m2'
+Successfully built image 'europe-west1-docker.pkg.dev/cloudorbitnx/cloud-run-source-deploy/app-spring-petclinic/spring-pet-clinic:f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011'
+Finished Step #0 - "Buildpack"
+Starting Step #1 - "Push"
+Already have image (with digest): gcr.io/cloud-builders/docker
+The push refers to repository [europe-west1-docker.pkg.dev/cloudorbitnx/cloud-run-source-deploy/app-spring-petclinic/spring-pet-clinic]
+83d85471d9f8: Preparing
+b66d172f3a4d: Preparing
+b95feea05494: Preparing
+0c627617d5b7: Preparing
+36f9de0748c4: Preparing
+a03e5e6ac735: Preparing
+daaa5876b48b: Preparing
+ed3c53a55832: Preparing
+43898a2f36de: Preparing
+f862e1968e4b: Preparing
+a03e5e6ac735: Waiting
+daaa5876b48b: Waiting
+ed3c53a55832: Waiting
+43898a2f36de: Waiting
+f862e1968e4b: Waiting
+36f9de0748c4: Pushed
+daaa5876b48b: Layer already exists
+83d85471d9f8: Pushed
+b95feea05494: Pushed
+ed3c53a55832: Layer already exists
+43898a2f36de: Layer already exists
+f862e1968e4b: Layer already exists
+0c627617d5b7: Pushed
+a03e5e6ac735: Pushed
+b1b730c7ea9e: Pull complete
+9c3b5522adba: Pull complete
+59ac045e6e47: Verifying Checksum
+59ac045e6e47: Download complete
+59ac045e6e47: Pull complete
+6a70f4ee788d: Pull complete
+Digest: sha256:df5de92a5583622cd4edd9554ab83c07ea533f5ea64cff95bb0b2ee8c9429660
+Status: Downloaded newer image for gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+Deploying...
+Creating Revision.................................................................................................................................................................................................................done
+Routing traffic.....done
+Done.
+Service [spring-pet-clinic] revision [spring-pet-clinic-00002-ptj] has been deployed and is serving 100 percent of traffic.
+Service URL: https://spring-pet-clinic-246604705403.europe-west1.run.app
+Finished Step #2 - "Deploy"
+PUSH
+Pushing europe-west1-docker.pkg.dev/cloudorbitnx/cloud-run-source-deploy/app-spring-petclinic/spring-pet-clinic:f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011
+The push refers to repository [europe-west1-docker.pkg.dev/cloudorbitnx/cloud-run-source-deploy/app-spring-petclinic/spring-pet-clinic]
+83d85471d9f8: Preparing
+b66d172f3a4d: Preparing
+b95feea05494: Preparing
+0c627617d5b7: Preparing
+36f9de0748c4: Preparing
+a03e5e6ac735: Preparing
+daaa5876b48b: Preparing
+ed3c53a55832: Preparing
+43898a2f36de: Preparing
+f862e1968e4b: Preparing
+a03e5e6ac735: Waiting
+daaa5876b48b: Waiting
+ed3c53a55832: Waiting
+43898a2f36de: Waiting
+f862e1968e4b: Waiting
+b95feea05494: Layer already exists
+0c627617d5b7: Layer already exists
+36f9de0748c4: Layer already exists
+b66d172f3a4d: Layer already exists
+83d85471d9f8: Layer already exists
+daaa5876b48b: Layer already exists
+43898a2f36de: Layer already exists
+a03e5e6ac735: Layer already exists
+ed3c53a55832: Layer already exists
+f862e1968e4b: Layer already exists
+f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011: digest: sha256:0d32c22248f4aeb2001b5ac8b10b727b3de6cd029f007e5e031f130a11b79478 size: 2417
+DONE
