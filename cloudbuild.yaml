@@ -94,6 +94,7 @@ substitutions:
   _REGION: "europe-west3" # GCP region for deployment
   _REPOSITORY: "cloud-run-source-deploy" # Artifact Registry repository name
   _SERVICE_NAME: "spring-petclinic" # Cloud Run service name
+  _NEW_RELIC_LICENSE_KEY: "" # Add your New Relic license key here or use a trigger substitution
 
 # Build configuration optimized for buildpack builds
 options:
