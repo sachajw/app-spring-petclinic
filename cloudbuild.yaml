@@ -1,5 +1,18 @@
 # Cloud Build configuration optimized for Spring Boot + Buildpacks
 # This configuration uses Google Cloud Buildpacks to automatically detect and build Spring Boot applications
+#
+# Build Trigger Configuration:
+# - Triggers on: Push to 'main' branch
+# - Source: GitHub repository
+# - Build config: This cloudbuild.yaml file
+#
+# To create the trigger, run:
+# gcloud builds triggers create github \
+#   --repo-name=app-spring-petclinic \
+#   --repo-owner=[YOUR_GITHUB_USERNAME] \
+#   --branch-pattern="^main$" \
+#   --build-config=cloudbuild.yaml \
+#   --description="Build and deploy Spring PetClinic on main branch push"
 
 steps:
   # Ensure Maven wrapper is executable (buildpack requirement)
@@ -70,7 +83,7 @@ steps:
       - "--max-instances=10"
       - "--concurrency=80"
       - "--timeout=300"
-      - "--set-env-vars=SPRING_PROFILES_ACTIVE=default,JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75.0"
+      - "--set-env-vars=SPRING_PROFILES_ACTIVE=default,JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75.0 -javaagent:/layers/google.java.runtime/java/lib/newrelic.jar,NEW_RELIC_APP_NAME=${_SERVICE_NAME},NEW_RELIC_ENVIRONMENT=production"
     id: "deploy-service"
     waitFor: ["verify-image"]
 
