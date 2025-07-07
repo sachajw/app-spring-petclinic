@@ -1,0 +1,29 @@
+# This file allows you to override buildpack configuration
+[build]
+exclude = [
+  ".git",
+  ".gitignore",
+  "*.md",
+  "Dockerfile*",
+  "docker-compose.yml",
+  ".dockerignore"
+]
+
+[[build.env]]
+name = "BP_JVM_VERSION"
+value = "21"
+
+[[build.env]]
+name = "BPL_JVM_HEAD_ROOM"
+value = "10"
+
+[[build.env]]
+name = "BPL_JVM_LOADED_CLASS_COUNT"
+value = "30"
+
+[[build.env]]
+name = "BPL_JVM_THREAD_COUNT"
+value = "40"
+
+[io.buildpacks]
+builder = "gcr.io/buildpacks/builder:latest"

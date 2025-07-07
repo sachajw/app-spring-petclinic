@@ -41,6 +41,8 @@ steps:
       - "--env=MAVEN_OPTS=-Dhttp.keepAlive=false" # Maven HTTP optimization
       - "--env=BP_JVM_VERSION=21" # Buildpack JVM version
       - "--env=BP_MAVEN_BUILD_ARGUMENTS=clean package -DskipTests --batch-mode" # Custom Maven args
+      - "--env=BPL_JVM_THREAD_COUNT=default" # JVM thread configuration
+      - "--env=BPL_SPRING_CLOUD_BINDINGS_DISABLED=true" # Disable Spring Cloud bindings
       - "--clear-cache" # Force fresh build
     id: "build-image"
     waitFor: ["prepare-build"]
@@ -83,7 +85,7 @@ steps:
       - "--max-instances=10"
       - "--concurrency=80"
       - "--timeout=300"
-      - "--set-env-vars=SPRING_PROFILES_ACTIVE=default,JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75.0 -javaagent:/layers/google.java.runtime/java/lib/newrelic.jar,NEW_RELIC_APP_NAME=${_SERVICE_NAME},NEW_RELIC_ENVIRONMENT=production"
+      - "--set-env-vars=SPRING_PROFILES_ACTIVE=default,JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75.0,NEW_RELIC_APP_NAME=${_SERVICE_NAME},NEW_RELIC_ENVIRONMENT=production,NEW_RELIC_LICENSE_KEY=${_NEW_RELIC_LICENSE_KEY}"
     id: "deploy-service"
     waitFor: ["verify-image"]
 
