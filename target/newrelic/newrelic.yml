@@ -7,12 +7,13 @@
 # This section is for settings common to all environments.
 # Do not add anything above this next line.
 common: &default_settings
+
   # ============================== LICENSE KEY ===============================
   # You must specify the license key associated with your New Relic
   # account. For example, if your license key is 12345 use this:
   # license_key: '12345'
   # The key binds your agent's data to your account in the New Relic UI.
-  license_key: 'NRJS-8aca35997a41b378b3f'
+  license_key: '<%= license_key %>'
 
   # Agent enabled
   # Use this setting to disable the agent instead of removing it from the startup command.
@@ -28,7 +29,7 @@ common: &default_settings
   # app_name: My Application;My Application 2
   # This setting is required. Up to 3 different application names can be specified.
   # The first application name must be unique.
-  app_name: spring-pet-clinic
+  app_name: My Application
 
   # To enable high security, set this property to true. When in high
   # security mode, the agent will use SSL and obfuscated SQL. Additionally,
@@ -84,12 +85,14 @@ common: &default_settings
 
   # AI Monitoring captures insights on the performance, quality, and cost of interactions with LLM models made with instrumented SDKs.
   ai_monitoring:
+
     # Provides control over all AI Monitoring functionality. Set as true to enable all AI Monitoring features.
     # Default is false.
-    enabled: true
+    enabled: false
 
     # Provides control over whether attributes for the input and output content should be added to LLM events.
     record_content:
+
       # Set as false to disable attributes for the input and output content.
       # Default is true.
       enabled: true
@@ -98,6 +101,7 @@ common: &default_settings
   # and decorate local application log files with agent metadata for use with third party log forwarders.
   # The application_logging.forwarding and application_logging.local_decorating should not be used together.
   application_logging:
+
     # Provides control over all the application logging features for forwarding, local log
     # decorating, and metrics features. Set as false to disable all application logging features.
     # Default is true.
@@ -106,6 +110,7 @@ common: &default_settings
     # The agent will automatically forward application logs to New Relic in
     # a format that includes agent metadata for linking them to traces and errors.
     forwarding:
+
       # When true, application logs will be forwarded to New Relic. The default is true.
       enabled: true
 
@@ -118,6 +123,7 @@ common: &default_settings
       # pulled from the top-level 'labels' section (located near the bottom of this config file).
       # Default is false.
       labels:
+
         # When true, custom tags (labels) will be added to agent forwarded logs.
         enabled: false
 
@@ -128,6 +134,7 @@ common: &default_settings
 
       # Whether the log events should include context from loggers with support for that.
       context_data:
+
         # When true, application logs will contain context data.
         enabled: false
 
@@ -140,6 +147,7 @@ common: &default_settings
     # The agent will generate metrics to indicate the number of
     # application log events occurring at each distinct log level.
     metrics:
+
       # When true, application log metrics will be reported. The default is true.
       enabled: true
 
@@ -148,12 +156,13 @@ common: &default_settings
     # of the agent's built-in forwarding feature, to send your application log events to New Relic.
     #local_decorating:
 
-    # When true, the agent will decorate your application log files with linking metadata. The default is false.
-    #enabled: false
+      # When true, the agent will decorate your application log files with linking metadata. The default is false.
+      #enabled: false
 
   # Adds integration with CodeStream, introducing Code-Level Metrics! Golden Signals visible in your
   # IDE through New Relic CodeStream.
   code_level_metrics:
+
     # When true the agent will capture namespace and function information
     # on spans to enable code level metrics in CodeStream.
     enabled: true
@@ -178,16 +187,18 @@ common: &default_settings
   # attributes can be found in transaction traces, traced errors,
   # transaction events, and page views.
   attributes:
+
     # When true, attributes will be sent to New Relic. The default is true.
     enabled: true
 
-    #A comma separated list of attribute keys whose values should
+    #A comma separated list of attribute keys whose values should 
     # be sent to New Relic.
     #include:
 
-    # A comma separated list of attribute keys whose values should
+    # A comma separated list of attribute keys whose values should 
     # not be sent to New Relic.
     #exclude:
+
 
     # Defines which sets of http attributes the agent will send: standard, legacy or both (default).
     # Having the agent send both sets will increase ingestion.
@@ -199,6 +210,7 @@ common: &default_settings
   # minute. Included in the transaction is the exact call sequence of
   # the transactions including any SQL statements issued.
   transaction_tracer:
+
     # Transaction tracer is enabled by default. Set this to false to turn it off.
     # This feature is not available to Lite accounts and is automatically disabled.
     # Default is true.
@@ -237,7 +249,7 @@ common: &default_settings
     # Default is true.
     explain_enabled: true
 
-    # Threshold for query execution time below which query plans will
+    # Threshold for query execution time below which query plans will 
     # not be captured. Relevant only when `explain_enabled` is true.
     # Default is 0.5 seconds.
     explain_threshold: 0.5
@@ -251,6 +263,7 @@ common: &default_settings
   # Error collector captures information about uncaught exceptions and
   # sends them to New Relic for viewing.
   error_collector:
+
     # This property enables the collection of errors. If the property is not
     # set or the property is set to false, then errors will not be collected.
     # Default is true.
@@ -270,8 +283,9 @@ common: &default_settings
     ignore_status_codes: 404
 
   # Transaction events are used for histograms and percentiles. Non-aggregated data is collected
-  # for each web transaction and sent to the server on harvest.
+  # for each web transaction and sent to the server on harvest. 
   transaction_events:
+
     # Set to false to disable transaction events.
     # Default is true.
     enabled: true
@@ -284,6 +298,7 @@ common: &default_settings
   # Distributed tracing lets you see the path that a request takes through your distributed system.
   # This replaces the legacy Cross Application Tracing feature.
   distributed_tracing:
+
     # Set to false to disable distributed tracing.
     # Default is true.
     enabled: true
@@ -315,6 +330,7 @@ common: &default_settings
   # Span events capture attributes that describe execution context and provide linking metadata.
   # Span events require distributed tracing to be enabled.
   span_events:
+
     # Set to false to disable Span events.
     # Default is true.
     enabled: true
@@ -327,6 +343,7 @@ common: &default_settings
     # Provides the ability to filter the attributes attached to Span events.
     # Custom attributes can be added to Span events using the NewRelic.getAgent().getTracedMethod().addCustomAttribute(...) API.
     attributes:
+
       # When true, attributes will be sent to New Relic. The default is true.
       enabled: true
 
@@ -340,6 +357,7 @@ common: &default_settings
   # in your application's threads as they run.
   # This feature is not available to Lite accounts and is automatically disabled.
   thread_profiler:
+
     # Set to false to disable the thread profiler.
     # Default is true.
     enabled: true
@@ -347,8 +365,9 @@ common: &default_settings
   # New Relic Real User Monitoring (RUM) gives you insight into the performance real users are
   # experiencing with your website. This is accomplished by measuring the time it takes for
   # your users' browsers to download and render your web pages by injecting a small amount
-  # of JavaScript code into the header and footer of each page.
+  # of JavaScript code into the header and footer of each page. 
   browser_monitoring:
+
     # By default the agent automatically inserts API calls in compiled JSPs to
     # inject the monitoring JavaScript into web pages. Not all rendering engines are supported.
     # See https://docs.newrelic.com/docs/agents/java-agent/instrumentation/new-relic-browser-java-agent#manual_instrumentation
@@ -363,7 +382,7 @@ common: &default_settings
 
     # If tag_lib_instrument is true, this is the regex pattern that will be used to detect HTML start head elements. Modify
     # the regex if you have more complex start head elements (attributes for example). The defined pattern is case-insensitive.
-    tag_lib_head_pattern: "<head>"
+    tag_lib_head_pattern: '<head>'
 
   # By default, the agent sends JVM input arguments to New Relic, where they are visible as Environment data.
   # Set to false to disable the sending of JVM props.
@@ -386,7 +405,8 @@ common: &default_settings
   # Class transformer can be used to disable all agent instrumentation or specific instrumentation modules.
   # All instrumentation modules can be found here: https://github.com/newrelic/newrelic-java-agent/tree/main/instrumentation
   class_transformer:
-    # This instrumentation reports the name of the user principal returned from
+
+    # This instrumentation reports the name of the user principal returned from 
     # HttpServletRequest.getUserPrincipal() when servlets and filters are invoked.
     com.newrelic.instrumentation.servlet-user:
       enabled: false
@@ -401,7 +421,8 @@ common: &default_settings
     # Classes loaded by classloaders in this list will not be instrumented.
     # This is a useful optimization for runtimes which use classloaders to
     # load dynamic classes which the agent would not instrument.
-    classloader_excludes: groovy.lang.GroovyClassLoader$InnerLoader,
+    classloader_excludes:
+      groovy.lang.GroovyClassLoader$InnerLoader,
       org.codehaus.groovy.runtime.callsite.CallSiteClassLoader,
       com.collaxa.cube.engine.deployment.BPELClassLoader,
       org.springframework.data.convert.ClassGeneratingEntityInstantiator$ObjectInstantiatorClassGenerator,
@@ -434,6 +455,7 @@ common: &default_settings
   # production when using an EU license key. Other ingest endpoints can be configured manually.
   # Requires a JVM that provides the JFR library.
   jfr:
+
     # Set to true to enable Real-time profiling with JFR.
     # Default is false.
     enabled: false
@@ -467,7 +489,7 @@ common: &default_settings
   security:
     # Determines whether the security data is sent to New Relic or not. When this is disabled and agent.enabled is
     # true, the security module will run but data will not be sent. Default is false.
-    enabled: true
+    enabled: false
 
     # New Relic Security provides two modes: IAST and RASP
     # Default is IAST. Due to the invasive nature of IAST scanning, DO NOT enable this mode in either a
@@ -485,7 +507,7 @@ common: &default_settings
     # This configuration allows users to specify a unique test identifier when running IAST Scan with CI/CD
     # iast_test_identifier: 'run-id'
 
-    # Security controllers
+      # Security controllers
     scan_controllers:
       # The scan_request_rate_limit configuration allows to specify maximum number of replay request played per minute.
       # The maximum is 3600 and the minimum is 12 replay request per minute.
@@ -496,9 +518,9 @@ common: &default_settings
     # The scan_schedule configuration allows to specify when IAST scans should be executed
     scan_schedule:
       # The delay field specifies the delay in minutes before the IAST scan starts. This allows to schedule the scan to start at a later time.
-      delay: 0 #In minutes, default is 0 min
+      delay: 0        #In minutes, default is 0 min
       # The duration field specifies the duration of the IAST scan in minutes. This determines how long the scan will run.
-      duration: 0 #In minutes, default is forever
+      duration: 0      #In minutes, default is forever
 
       # The schedule field specifies a cron expression that defines when the IAST scan should start.
       #schedule: ""   #By default, schedule is inactive
@@ -513,7 +535,7 @@ common: &default_settings
       #   api:
       #    - .*account.*
       #    - .*/\api\/v1\/.*?\/login
-      api: []
+      api: [ ]
 
       # The parameters configuration allows users to specify headers, query parameters, and body keys that should be excluded from IAST scans.
       # Example:
@@ -528,11 +550,11 @@ common: &default_settings
       #      - account.contact
       http_request_parameters:
         # A list of HTTP header keys. If a request includes any headers with these keys, the corresponding IAST scan will be skipped.
-        header: []
+        header: [ ]
         # A list of query parameter keys. The presence of these parameters in the request's query string will lead to skipping the IAST scan.
-        query: []
+        query: [ ]
         # A list of keys within the request body. If these keys are found in the body content, the IAST scan will be omitted.
-        body: []
+        body: [ ]
 
       # The iast_detection_category configuration allows to specify which categories of vulnerabilities should not be detected by Security Agents.
       # If any of these categories are set to true, Security Agents will not generate events or flag vulnerabilities for that category.
@@ -577,15 +599,15 @@ common: &default_settings
 
 development:
   <<: *default_settings
-  app_name: Spring Pet Clinic (Development)
+  app_name: My Application (Development)
 
 test:
   <<: *default_settings
-  app_name: Spring Pet Clinic (Test)
+  app_name: My Application (Test)
 
 production:
   <<: *default_settings
 
 staging:
   <<: *default_settings
-  app_name: Spring Pet Clinic (Staging)
+  app_name: My Application (Staging)

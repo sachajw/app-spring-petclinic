@@ -40,11 +40,11 @@
       
       // Load New Relic Browser Agent script
       /*[# th:if="${@environment.getProperty('NEW_RELIC_LICENSE_KEY') != null and @environment.getProperty('NEW_RELIC_LICENSE_KEY') != ''}"]*/ 
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://js-agent.newrelic.com/nr-1210.min.js';f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer');
+      (function(w,d,s){var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s);j.async=true;j.src=
+      'https://js-agent.newrelic.com/nr-loader-spa-1210.min.js';
+      f.parentNode.insertBefore(j,f);
+      })(window,document,'script');
       /*[/]*/
       //]]>
   </script>
