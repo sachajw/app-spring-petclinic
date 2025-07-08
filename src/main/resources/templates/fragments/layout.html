@@ -124,7 +124,7 @@
     // Test JavaScript execution in Thymeleaf template
     console.log('JavaScript is executing properly in Thymeleaf template!');
     console.log('Page loaded successfully without white screen issues');
-    console.log('Thymeleaf context path:', /*[[${#httpServletRequest.contextPath}]]*/ '');
+    console.log('Thymeleaf context path:', /*[[${@environment.getProperty('server.servlet.context-path', '')}]]*/ '');
     
     // Test DOM manipulation after page load
     document.addEventListener('DOMContentLoaded', function() {
