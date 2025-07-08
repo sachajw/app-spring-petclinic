@@ -85,7 +85,7 @@ steps:
       - "--max-instances=10"
       - "--concurrency=80"
       - "--timeout=300"
-      - "--set-env-vars=SPRING_PROFILES_ACTIVE=default,JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75.0,NEW_RELIC_APP_NAME=${_SERVICE_NAME},NEW_RELIC_ENVIRONMENT=production,NEW_RELIC_LICENSE_KEY=${_NEW_RELIC_LICENSE_KEY}"
+      - "--set-env-vars=SPRING_PROFILES_ACTIVE=default,JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75.0,NEW_RELIC_APP_NAME=${_SERVICE_NAME},NEW_RELIC_ENVIRONMENT=production,NEW_RELIC_LICENSE_KEY=${_NEW_RELIC_LICENSE_KEY},NEW_RELIC_ACCOUNT_ID=${_NEW_RELIC_ACCOUNT_ID},NEW_RELIC_TRUST_KEY=${_NEW_RELIC_TRUST_KEY},NEW_RELIC_AGENT_ID=${_NEW_RELIC_AGENT_ID},NEW_RELIC_APPLICATION_ID=${_NEW_RELIC_APPLICATION_ID}"
     id: "deploy-service"
     waitFor: ["verify-image"]
 
@@ -95,6 +95,10 @@ substitutions:
   _REPOSITORY: "cloud-run-source-deploy" # Artifact Registry repository name
   _SERVICE_NAME: "spring-petclinic" # Cloud Run service name
   _NEW_RELIC_LICENSE_KEY: "NRJS-8aca35997a41b378b3f" # Add your New Relic license key here or use a trigger substitution
+  _NEW_RELIC_ACCOUNT_ID: "538737400" # Add your New Relic Account ID
+  _NEW_RELIC_TRUST_KEY: "6872697" # Add your New Relic Trust Key
+  _NEW_RELIC_AGENT_ID: "538737400" # Add your New Relic Browser Agent ID
+  _NEW_RELIC_APPLICATION_ID: "538737400" # Add your New Relic Application ID
 
 # Build configuration optimized for buildpack builds
 options:
@@ -110,3 +114,10 @@ timeout: "1800s"
 # - BP_JVM_VERSION: JVM version for buildpack
 # - BP_MAVEN_BUILD_ARGUMENTS: Custom Maven build arguments
 # - MAVEN_OPTS: Maven JVM options
+#
+# New Relic Browser Monitoring environment variables:
+# - NEW_RELIC_ACCOUNT_ID: Your New Relic account ID (found in Account Settings)
+# - NEW_RELIC_TRUST_KEY: Trust key for browser agent (found in Browser app settings)
+# - NEW_RELIC_AGENT_ID: Browser agent ID (found in Browser app settings)
+# - NEW_RELIC_APPLICATION_ID: Browser application ID (found in Browser app settings)
+# - NEW_RELIC_LICENSE_KEY: Your New Relic license key (already configured above)

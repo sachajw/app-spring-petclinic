@@ -17,6 +17,13 @@
     </div>
   </div>
 
+  <!-- Page-specific JavaScript test -->
+  <script>
+    console.log('Welcome page specific JavaScript is running!');
+    console.log('Testing Thymeleaf expressions in JavaScript:');
+    console.log('Welcome message:', /*[[#{welcome}]]*/ 'Welcome');
+  </script>
+
 </body>
 
 </html>
