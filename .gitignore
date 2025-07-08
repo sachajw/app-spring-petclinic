@@ -1,6 +1,7 @@
 HELP.md
 pom.xml.bak
 target/
+!target/newrelic/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
